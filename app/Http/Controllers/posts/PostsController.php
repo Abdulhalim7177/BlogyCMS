@@ -34,8 +34,11 @@ class PostsController extends Controller
         $postBusiness = PostModel::where('category', 'Business')->take(2)->get();
         $postBusinessTwo = PostModel::where('category', 'Business')->take(3)->orderBy('title', 'desc')->get();
 
+        // random post section
+        $randPost = PostModel::take(4)->orderBy('category', 'desc')->get();
+
         return view('posts.index',
-        compact('posts' , 'postOne', 'postTwo', 'postBusiness', 'postBusinessTwo'));
+        compact('posts' , 'postOne', 'postTwo', 'postBusiness', 'postBusinessTwo', 'randPost'));
     }
 
     public function single($id){
