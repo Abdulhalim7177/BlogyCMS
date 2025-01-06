@@ -37,11 +37,27 @@ class PostsController extends Controller
         // random post section
         $randPost = PostModel::take(4)->orderBy('category', 'desc')->get();
 
+        // culture section
+        $postCulture = PostModel::where('category', 'Culture')->take(2)->get();
+        $postCultureTwo = PostModel::where('category', 'Culture')->take(3)->get();
+
+        //politics section
+
+        $postPolitics = PostModel::where('category', 'Politics')->take(9)->get();
+
+        //travel section
+        $postTravel = PostModel::where('category', 'Travel')->take(1)->orderBy('title', 'desc')->get();
+        $postTravelTwo = PostModel::where('category', 'Travel')->take(2)->orderBy('id', 'desc')->get();
+        $postTravelOne = PostModel::where('category', 'Travel')->take(1)->orderBy('description', 'desc')->get();
+
+
         return view('posts.index',
-        compact('posts' , 'postOne', 'postTwo', 'postBusiness', 'postBusinessTwo', 'randPost'));
+        compact('posts' , 'postOne', 'postTwo', 'postBusiness', 'postBusinessTwo', 'randPost', 'postCulture', 'postCultureTwo', 'postPolitics', 'postTravel', 'postTravelTwo', 'postTravelOne'));
     }
 
     public function single($id){
+        $single = PostModel::find($id);
+        return view('posts.single' , compact('single'));
 
     }
 }
