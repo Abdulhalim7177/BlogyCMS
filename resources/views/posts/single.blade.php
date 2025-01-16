@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="site-cover site-cover-sm same-height overlay single-page" style="background-image: url('{{ asset('assets/images/'.$single->image.'') }}');">
+<div class="site-cover site-cover-sm same-height overlay single-page" style="margin-top:-25px; background-image: url('{{ asset('assets/images/'.$single->image.'') }}');">
     <div class="container">
       <div class="row same-height justify-content-center">
         <div class="col-md-6">
@@ -116,10 +116,10 @@
           <!-- END sidebar-box -->
           <div class="sidebar-box">
             <div class="bio text-center">
-              <img src="images/person_2.jpg" alt="Image Placeholder" class="img-fluid mb-3">
+              <img src="{{ asset('assets/images/'.$user->image.'') }}');" alt="Image Placeholder" class="img-fluid mb-3">
               <div class="bio-body">
-                <h2>Hannah Anderson</h2>
-                <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem facilis sunt repellendus excepturi beatae porro debitis voluptate nulla quo veniam fuga sit molestias minus.</p>
+                <h2>{{$user->name}}</h2>
+                <p class="mb-4">{{$user->description}}</p>
                 <p><a href="#" class="btn btn-primary btn-sm rounded px-2 py-2">Read my bio</a></p>
                 <p class="social">
                   <a href="#" class="p-2"><span class="fa fa-facebook"></span></a>

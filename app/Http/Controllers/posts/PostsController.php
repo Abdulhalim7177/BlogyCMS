@@ -5,6 +5,7 @@ namespace App\Http\Controllers\posts;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\post\PostModel;
+use App\Models\User;
 
 class PostsController extends Controller
 {
@@ -20,7 +21,6 @@ class PostsController extends Controller
     // }
 
     public function index(){
-
 
         // first section
 
@@ -57,7 +57,13 @@ class PostsController extends Controller
 
     public function single($id){
         $single = PostModel::find($id);
-        return view('posts.single' , compact('single'));
+        
+        // Author User
+
+        $user = user::find($single->user_id);
+
+
+        return view('posts.single' , compact('single', 'user'));
 
     }
 }
