@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="site-cover site-cover-sm same-height overlay single-page" style="margin-top:-25px; background-image: url('{{ asset('assets/images/'.$single->image.'') }}');">
     <div class="container">
       <div class="row same-height justify-content-center">
@@ -8,7 +9,7 @@
           <div class="post-entry text-center">
             <h1 class="mb-4">{{ $single->title }}</h1>
             <div class="post-meta align-items-center text-center">
-              <figure class="author-figure mb-0 me-3 d-inline-block"><img src="images/person_1.jpg" alt="Image" class="img-fluid"></figure>
+              <figure class="author-figure mb-0 me-3 d-inline-block"><img src="{{ asset('assets/user_images/'.$user->image.'') }}" alt="Image" class="img-fluid"></figure>
               <span class="d-inline-block mt-1">{{ $single->user_name }}</span>
               <span>&nbsp;-&nbsp; {{ $single->created_at }}</span>
             </div>
@@ -28,7 +29,6 @@
           <div class="post-content-body">
            <p>{{ $single->description }}</p>
           </div>
-
 
           <div class="pt-5">
             <p>Categories: <a href="#">{{ $single->category }}</a></p>
@@ -116,7 +116,7 @@
           <!-- END sidebar-box -->
           <div class="sidebar-box">
             <div class="bio text-center">
-              <img src="{{ asset('assets/images/'.$user->image.'') }}');" alt="Image Placeholder" class="img-fluid mb-3">
+              <img src="{{ asset('assets/user_images/'.$user->image.'') }}" alt="user image" class="img-fluid mb-3">
               <div class="bio-body">
                 <h2>{{$user->name}}</h2>
                 <p class="mb-4">{{$user->description}}</p>
@@ -135,45 +135,26 @@
             <h3 class="heading">Popular Posts</h3>
             <div class="post-entry-sidebar">
               <ul>
+                @foreach( $popularPost as $Post)
                 <li>
-                  <a href="">
-                    <img src="images/img_1_sq.jpg" alt="Image placeholder" class="me-4 rounded">
+                  <a href="{{ route('posts.single', $Post->id) }}">
+                    <img src="{{ asset('assets/images/'.$Post->image.'') }}" alt="Image placeholder" class="me-4 rounded">
                     <div class="text">
-                      <h4>There’s a Cool New Way for Men to Wear Socks and Sandals</h4>
+                      <h4>{{ $Post->title }}</h4>
                       <div class="post-meta">
-                        <span class="mr-2">March 15, 2018 </span>
+                        <span class="mr-2">{{ $Post->created_at }}</span>
                       </div>
                     </div>
                   </a>
                 </li>
-                <li>
-                  <a href="">
-                    <img src="images/img_2_sq.jpg" alt="Image placeholder" class="me-4 rounded">
-                    <div class="text">
-                      <h4>There’s a Cool New Way for Men to Wear Socks and Sandals</h4>
-                      <div class="post-meta">
-                        <span class="mr-2">March 15, 2018 </span>
-                      </div>
-                    </div>
-                  </a>
-                </li>
-                <li>
-                  <a href="">
-                    <img src="images/img_3_sq.jpg" alt="Image placeholder" class="me-4 rounded">
-                    <div class="text">
-                      <h4>There’s a Cool New Way for Men to Wear Socks and Sandals</h4>
-                      <div class="post-meta">
-                        <span class="mr-2">March 15, 2018 </span>
-                      </div>
-                    </div>
-                  </a>
-                </li>
+                @endforeach
+            
               </ul>
             </div>
           </div>
           <!-- END sidebar-box -->
 
-          <div class="sidebar-box">
+          <div class="sidi sidebar-box">
             <h3 class="heading">Categories</h3>
             <ul class="categories">
               <li><a href="#">Food <span>(12)</span></a></li>

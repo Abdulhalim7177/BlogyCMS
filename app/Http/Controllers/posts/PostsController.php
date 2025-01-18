@@ -60,10 +60,12 @@ class PostsController extends Controller
         
         // Author User
 
-        $user = user::find($single->user_id);
+        $user = User::find($single->user_id);
+
+        $popularPost = PostModel::take(3)->orderBy('id', 'desc')->get();;
 
 
-        return view('posts.single' , compact('single', 'user'));
+        return view('posts.single' , compact('single', 'user', 'popularPost'));
 
     }
 }
