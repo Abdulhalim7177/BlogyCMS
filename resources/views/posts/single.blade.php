@@ -131,7 +131,7 @@
             </div>
           </div>
           <!-- END sidebar-box -->
-          <div class="sidebar-box">
+          <div  style="padding: 20px;"  class="sidi sidebar-box">
             <h3 class="heading">Popular Posts</h3>
             <div class="post-entry-sidebar">
               <ul>
@@ -154,14 +154,12 @@
           </div>
           <!-- END sidebar-box -->
 
-          <div class="sidi sidebar-box">
+          <div  style="padding: 20px;" class="sidi sidebar-box">
             <h3 class="heading">Categories</h3>
             <ul class="categories">
-              <li><a href="#">Food <span>(12)</span></a></li>
-              <li><a href="#">Travel <span>(22)</span></a></li>
-              <li><a href="#">Lifestyle <span>(37)</span></a></li>
-              <li><a href="#">Business <span>(42)</span></a></li>
-              <li><a href="#">Adventure <span>(14)</span></a></li>
+              @foreach($categories as $category)
+                <li><a href="#">{{ $category->name }} <span>{{$category->Total}}</span></a></li>
+              @endforeach
             </ul>
           </div>
           <!-- END sidebar-box -->

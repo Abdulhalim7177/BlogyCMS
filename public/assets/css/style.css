@@ -9569,7 +9569,9 @@ textarea.form-control-lg {
     padding-top: 0px !important;
     padding-bottom: 0px !important; }
 
-
+.sidi{
+  padding: 20px;
+}
 /* Burger */
 .burger {
   width: 28px;
