@@ -9,6 +9,7 @@ use App\Models\post\PostModel;
 use App\Models\post\Comment;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class PostsController extends Controller
 {
@@ -85,11 +86,33 @@ class PostsController extends Controller
 
         // $comments = Comment::select('comment', 'post_id', 'user_id', 'user_name')->where('post_id', $id)->get();
 
-        $moreBlogs = PostModel::where('category', $single->category)->where('id', '<>', $id)->take(4)->get();
+        // $moreBlogs = PostModel::where('category', $single->category)->where('id', '<>', $id)->take(4)->get();
 
-        //$moreBlogs = PostModel::where('category' , $single->category)->where('id','!=', $id)->take(4);
+        $moreBlogs = PostModel::where('category' , $single->category)->where('id','!=', $id)->take(4)->get();
     
         return view('posts.single', compact('single', 'user', 'popularPost', 'categories', 'comments', 'moreBlogs'));
+    }
+
+    public function storeComment(Request $request)
+    {
+        $insertComment = Comment::create([
+            "comment" => $request->comment,
+            "post_id" => $request->post_id,
+            "user_id" => Auth::user()->id,
+            "user_name" => Auth::user()->name,
+        ]);
+
+        echo "<script>alert('Comment added successfully!')</script>";
+        
+        return redirect()->back();
+        // $comment = new Comment();
+        // $comment->comment = $request->comment;
+        // $comment->post_id = $request->post_id;
+        // $comment->user_id = $request->user_id;
+        // $comment->user_name = $request->user_name;
+        // $comment->save();
+    
+
     }
     
 }
