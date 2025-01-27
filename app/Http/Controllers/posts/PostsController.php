@@ -83,6 +83,8 @@ class PostsController extends Controller
         // dd($categories); // Or use print_r($categories) to inspect the result
 
         $comments = Comment::where('post_id', $id)->get();
+        $commentNumber = $comments->count();
+        // $commentNumber = Comment::where('post_id', $id)->count(); do the same as the one above
 
         // $comments = Comment::select('comment', 'post_id', 'user_id', 'user_name')->where('post_id', $id)->get();
 
@@ -90,7 +92,7 @@ class PostsController extends Controller
 
         $moreBlogs = PostModel::where('category' , $single->category)->where('id','!=', $id)->take(4)->get();
     
-        return view('posts.single', compact('single', 'user', 'popularPost', 'categories', 'comments', 'moreBlogs'));
+        return view('posts.single', compact('single', 'user', 'popularPost', 'categories', 'comments', 'moreBlogs', 'commentNumber'));
     }
 
     public function storeComment(Request $request)

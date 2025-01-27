@@ -34,15 +34,13 @@
             <p>Categories: <a href="#">{{ $single->category }}</a></p>
           </div>
           @if (\Session::has('success'))
-            <div class="alert alert-success">
-              <ul>
-                <li>{!! \Session::get('success') !!}</li>
-              </ul>
+            <div class="alert alert-success">   
+              <p>{!! \Session::get('success') !!}</p>
             </div>
           @endif
  
           <div class="pt-5 comment-wrap">
-            <h3 class="mb-5 heading">6 Comments</h3>
+            <h3 class="mb-5 heading">{{$commentNumber}}</h3>
             <ul class="comment-list">
             @foreach ($comments as $comment)
                 <li class="comment">
