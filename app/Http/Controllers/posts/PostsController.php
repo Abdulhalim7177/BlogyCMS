@@ -80,10 +80,16 @@ class PostsController extends Controller
     
         // Optional: To debug the query result
         // dd($categories); // Or use print_r($categories) to inspect the result
+
         $comments = Comment::where('post_id', $id)->get();
+
         // $comments = Comment::select('comment', 'post_id', 'user_id', 'user_name')->where('post_id', $id)->get();
+
+        $moreBlogs = PostModel::where('category' , $single->category)->where('id', '!=', $id)->take(4)->get();
+
+        //$moreBlogs = PostModel::where('category' , $single->category)->where('id','!=', $id)->take(4);
     
-        return view('posts.single', compact('single', 'user', 'popularPost', 'categories', 'comments'));
+        return view('posts.single', compact('single', 'user', 'popularPost', 'categories', 'comments', 'moreBlogs'));
     }
     
 }
