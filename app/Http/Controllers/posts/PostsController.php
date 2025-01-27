@@ -85,7 +85,7 @@ class PostsController extends Controller
 
         // $comments = Comment::select('comment', 'post_id', 'user_id', 'user_name')->where('post_id', $id)->get();
 
-        $moreBlogs = PostModel::where('category' , $single->category)->where('id', '!=', $id)->take(4)->get();
+        $moreBlogs = PostModel::where('category', $single->category)->where('id', '<>', $id)->take(4)->get();
 
         //$moreBlogs = PostModel::where('category' , $single->category)->where('id','!=', $id)->take(4);
     
