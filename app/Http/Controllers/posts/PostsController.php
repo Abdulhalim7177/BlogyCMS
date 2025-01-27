@@ -6,6 +6,7 @@ namespace App\Http\Controllers\posts;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\post\PostModel;
+use App\Models\post\Comment;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
@@ -79,8 +80,10 @@ class PostsController extends Controller
     
         // Optional: To debug the query result
         // dd($categories); // Or use print_r($categories) to inspect the result
+        $comments = Comment::where('post_id', $id)->get();
+        // $comments = Comment::select('comment', 'post_id', 'user_id', 'user_name')->where('post_id', $id)->get();
     
-        return view('posts.single', compact('single', 'user', 'popularPost', 'categories'));
+        return view('posts.single', compact('single', 'user', 'popularPost', 'categories', 'comments'));
     }
     
 }
