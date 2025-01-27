@@ -34,6 +34,7 @@
             <p>Categories: <a href="#">{{ $single->category }}</a></p>
           </div>
 
+          
 
 
           <div class="pt-5 comment-wrap">

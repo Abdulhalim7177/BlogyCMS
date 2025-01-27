@@ -103,8 +103,9 @@ class PostsController extends Controller
         ]);
 
         echo "<script>alert('Comment added successfully!')</script>";
-        
-        return redirect()->back();
+
+        return redirect('/posts/single/'.$request->post_id.'')->with('success', 'Comment added successfully!');
+        ->route('posts.single', ['id' => $request->post_id]);
         // $comment = new Comment();
         // $comment->comment = $request->comment;
         // $comment->post_id = $request->post_id;
