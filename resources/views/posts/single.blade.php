@@ -51,7 +51,7 @@
                     <h3>{{$comment->user_name}}</h3>
                     <div class="meta">{{ $comment->created_at }}</div>
                     <p> {{ $comment->comment }}</p>
-                    <p><a href="#" class="reply rounded">Reply</a></p>
+                    {{-- <p><a href="#" class="reply rounded">Reply</a></p> --}}
                   </div>
                 </li>
               @endforeach
@@ -152,6 +152,15 @@
         <div class="col-12 text-uppercase text-black">More Blog Posts</div>
       </div>
       <div class="row">
+        <!-- If there are no more blogs to display -->
+        @if ($moreBlogs->isEmpty())
+          <div class="col-md-6 col-lg-3">
+            <div class="blog-entry">
+              <h2>No More Blogs</h2>
+            </div>
+          </div>
+        @endif
+
         @foreach($moreBlogs as $moreBlog)
           <div class="col-md-6 col-lg-3">
             <div class="blog-entry">
