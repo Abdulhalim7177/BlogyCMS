@@ -116,6 +116,22 @@ class PostsController extends Controller
     
 
     }
+
+    public function createPost()
+    {
+        return view('posts.create');
+    }
+    // public function createPost(Request $request)
+    // {
+    //     $post = new PostModel();
+    //     $post->title = $request->title;
+    //     $post->description = $request->description;
+    //     $post->category = $request->category;
+    //     $post->user_id = Auth::user()->id;
+    //     $post->save();
+
+    //     return redirect('/posts/index')->with('success', 'Post created successfully!');
+    // }
     
 }
 

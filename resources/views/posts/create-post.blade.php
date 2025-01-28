@@ -1,10 +1,15 @@
+@extends('layouts.app')
+
+@section('content')
+
+
 <div class="comment-form-wrap pt-5">
     <h3 class="mb-5">Leave a comment</h3>
     <!-- Add method attribute to specify the HTTP method for form submission -->
-    <form action="{{ route('comment.store') }}" method="POST" class="p-5 bg-light">
+    <form action="{{ route('') }}" method="POST" class="p-5 bg-light">
       @csrf
       <div class="form-group">
-        <input type="hidden" class="form-control" id="post_id" name="post_id" value="{{ $single->id }}">
+        <input type="hidden" class="form-control" id="post_id" name="post_id" value="">
       </div>
       <div class="form-group">
         <label for="message">Comment</label>
@@ -16,3 +21,5 @@
 
     </form>
   </div>
+
+  @endsection
