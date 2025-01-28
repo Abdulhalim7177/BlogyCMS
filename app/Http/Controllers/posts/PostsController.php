@@ -4,9 +4,10 @@
 namespace App\Http\Controllers\posts;
 
 use App\Models\User;
-use Illuminate\Http\Request;
-use App\Models\post\PostModel;
 use App\Models\post\Comment;
+use Illuminate\Http\Request;
+use App\Models\post\Category;
+use App\Models\post\PostModel;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -119,22 +120,26 @@ class PostsController extends Controller
 
     public function createPost()
     {
-        return view('posts.create-post');
+        $categories = Category::all();
+
+        return view('posts.create-post', compact('categories'));
     }
     public function storePost(Request $request)
     {
-        
+        $destination = 'assets/images/';
+        $myimage = $request->image->getClientOriginalName();
+        $request->image->move(public_path($destination, $myimage), $myimage);
+
         $insertPosts = PostModel::create([
             "title" => $request->title,
             "category" => $request->category,
             "user_id" => Auth::user()->id,
             "user_name" => Auth::user()->name,
             "description" => $request->description,
+            "image" => $myimage,
         ]);
 
-        $destination = 'assets/images/';
-        $myimage = $request->image->getClientOriginalName();
-        $request->image->move(public_path($destination, $myimage), $myimage);
+     
 
         return redirect('/posts/create-post')->with('success', 'Post created successfully!');
 
