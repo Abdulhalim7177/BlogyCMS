@@ -33,11 +33,16 @@
           <div class="pt-5">
             <p>Categories: <a href="#">{{ $single->category }}</a></p>
           </div>
-          @if (\Session::has('success'))
+          @if (\Session::has('delete'))
             <div class="alert alert-success">   
-              <p>{!! \Session::get('success') !!}</p>
+              <p>{!! \Session::get('delete') !!}</p>
             </div>
           @endif
+          @auth
+            {{-- @if (Auth::user()->id == $single->user_id) --}}
+              <a href="{{route('post.delete', $single->id)}}" class="btn btn-danger">Delete Post</a>
+            {{-- @endif --}}
+          @endauth  
  
           <div class="pt-5 comment-wrap">
             <h3 class="mb-5 heading">{{$commentNumber}}</h3>

@@ -18,3 +18,4 @@ Route::get('/posts/single/{id}', [PostsController::class, 'single'])->name('post
 Route::post('/posts/comment-store', [PostsController::class, 'storeComment'])->name('comment.store');
 Route::get('/posts/create-post', [PostsController::class, 'createPost'])->name('posts.create');
 Route::post('/posts/post-store', [PostsController::class, 'storePost'])->name('post.store');
+Route::get('/posts/post-delete/{id}', [PostsController::class, 'deletePost'])->name('post.delete');
