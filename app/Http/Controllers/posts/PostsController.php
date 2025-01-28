@@ -121,17 +121,32 @@ class PostsController extends Controller
     {
         return view('posts.create-post');
     }
-    // public function createPost(Request $request)
-    // {
-    //     $post = new PostModel();
-    //     $post->title = $request->title;
-    //     $post->description = $request->description;
-    //     $post->category = $request->category;
-    //     $post->user_id = Auth::user()->id;
-    //     $post->save();
+    public function storePost(Request $request)
+    {
+        
+        $insertPosts = PostModel::create([
+            "title" => $request->title,
+            "category" => $request->category,
+            "user_id" => Auth::user()->id,
+            "user_name" => Auth::user()->name,
+            "description" => $request->description,
+        ]);
 
-    //     return redirect('/posts/index')->with('success', 'Post created successfully!');
-    // }
+        $destination = 'assets/images/';
+        $myimage = $request->image->getClientOriginalName();
+        $request->image->move(public_path($destination, $myimage), $myimage);
+
+        return redirect('/posts/create-post')->with('success', 'Post created successfully!');
+
+        // $post = new PostModel();
+        // $post->title = $request->title;
+        // $post->description = $request->description;
+        // $post->category = $request->category;
+        // $post->user_id = Auth::user()->id;
+        // $post->save();
+
+        // return redirect('/posts/index')->with('success', 'Post created successfully!');
+    }
     
 }
 
