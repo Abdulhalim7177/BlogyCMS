@@ -119,7 +119,7 @@ class PostsController extends Controller
 
     public function createPost()
     {
-        return view('posts.create');
+        return view('posts.create-post');
     }
     // public function createPost(Request $request)
     // {

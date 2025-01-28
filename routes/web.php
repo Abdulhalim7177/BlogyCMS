@@ -16,4 +16,4 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/posts/index', [PostsController::class, 'index'])->name('post.index');
 Route::get('/posts/single/{id}', [PostsController::class, 'single'])->name('posts.single');
 Route::post('/posts/comment-store', [PostsController::class, 'storeComment'])->name('comment.store');
-Route::post('/posts/create-post', [PostsController::class, 'createPost'])->name('posts.create');
+Route::get('/posts/create-post', [PostsController::class, 'createPost'])->name('posts.create');
