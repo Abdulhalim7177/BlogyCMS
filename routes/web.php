@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\posts\PostsController;
 
 
@@ -11,8 +12,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/posts/index', [App\Http\Controllers\posts\PostsController::class, 'index'])->name('post.index');
-Route::get('/posts/single/{id}', [App\Http\Controllers\posts\PostsController::class, 'single'])->name('posts.single');
-Route::post('/posts/comment-store', [App\Http\Controllers\posts\PostsController::class, 'storeComment'])->name('comment.store');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/posts/index', [PostsController::class, 'index'])->name('post.index');
+Route::get('/posts/single/{id}', [PostsController::class, 'single'])->name('posts.single');
 Route::post('/posts/comment-store', [PostsController::class, 'storeComment'])->name('comment.store');
