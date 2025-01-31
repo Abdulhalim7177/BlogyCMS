@@ -122,7 +122,12 @@ class PostsController extends Controller
     {
         $categories = Category::all();
 
-        return view('posts.create-post', compact('categories'));
+        if(auth()->user()){
+            return view('posts.create-post', compact('categories'));
+        }else{
+            return abort(404);
+        }
+
     }
     public function storePost(Request $request)
     {
@@ -158,6 +163,30 @@ class PostsController extends Controller
         $post->delete();
 
         return redirect('/posts/index')->with('delete', 'Post deleted successfully!');
+    }
+    public function editPost($id){
+        $categories = Category::all();
+        $single = PostModel::find($id);
+
+        if(auth()->user()){
+            if(Auth::user()->id == $single->user_id){
+                return view('posts.post-edit', compact('single', 'categories'));
+            }
+            else{
+                return abort(404);
+            }
+        }
+     
+
+    }
+
+    public function updatePost(Request $request, $id){
+        $updatePost = PostModel::find($id);
+        $updatePost->update($request->all());
+        if($updatePost){
+            return redirect('/posts/single/'.$updatePost->id.'')->with('update', 'Post updated successfully!');
+        }
+
     }
     
 }

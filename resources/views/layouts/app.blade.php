@@ -52,12 +52,14 @@
                                 </form>
 
                                 <ul class="js-clone-nav d-none d-lg-inline-block text-start site-menu mx-auto">
-                                    <li class="active"><a href="index.html">Home</a></li>
+                                    <li class="active"><a href="{{route('home')}}">Home</a></li>
 
                                     <li><a href="category.html">Culture</a></li>
                                     <li><a href="category.html">Business</a></li>
                                     <li><a href="category.html">Politics</a></li>
-                                    <li><a href="{{route('posts.create')}}">Create Post</a></li>
+                                    @auth
+                                        <li><a href="{{route('posts.create')}}">Create Post</a></li>
+                                    @endauth
                                     <li><a href="contact.html">Contact Us</a></li>
                                     <li><a href="about.html">About Us</a></li>
                                 @guest

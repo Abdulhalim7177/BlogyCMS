@@ -22,6 +22,11 @@
   <section class="section">
     <div class="container">
 
+      @if (\Session::has('update'))
+      <div class="alert alert-success">   
+        <p>{!! \Session::get('update') !!}</p>
+      </div>
+    @endif
       <div class="row blog-entries element-animate">
 
         <div class="col-md-12 col-lg-8 main-content">
@@ -39,9 +44,14 @@
             </div>
           @endif
           @auth
-            {{-- @if (Auth::user()->id == $single->user_id) --}}
-              <a href="{{route('post.delete', $single->id)}}" class="btn btn-danger">Delete Post</a>
-            {{-- @endif --}}
+            @if (Auth::user()->id == $single->user_id)
+              <a class="mr-5" href="{{route('post.delete', $single->id)}}" class="btn btn-danger">Delete Post</a>
+            @endif
+          @endauth  
+          @auth
+            @if (Auth::user()->id == $single->user_id)
+              <a href="{{route('post.edit', $single->id)}}" class="btn btn-warning">Edit Post</a>
+            @endif
           @endauth  
  
           <div class="pt-5 comment-wrap">
@@ -75,9 +85,11 @@
                   <label for="message">Comment</label>
                   <textarea name="comment" placeholder ="Comment" cols="30" rows="10" class="form-control"></textarea>
                 </div>
-                <div class="form-group">
-                  <input type="submit" value="Post Comment" class="btn btn-primary">
-                </div>
+                @auth
+                  <div class="form-group">
+                    <input type="submit" value="Post Comment" class="btn btn-primary">
+                  </div>
+                @endauth
 
               </form>
             </div>
