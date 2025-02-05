@@ -60,8 +60,8 @@
                                     @auth
                                         <li><a href="{{route('posts.create')}}">Create Post</a></li>
                                     @endauth
-                                    <li><a href="contact.html">Contact Us</a></li>
-                                    <li><a href="about.html">About Us</a></li>
+                                    <li><a href="{{ route('contact') }}">Contact Us</a></li>
+                                    <li><a href="{{ route('about') }}">About Us</a></li>
                                 @guest
                                     @if (Route::has('login'))
                                         <li class="nav-item">

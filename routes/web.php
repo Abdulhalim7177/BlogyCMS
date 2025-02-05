@@ -12,6 +12,8 @@ Auth::routes();
 Route::get('/', [PostsController::class, 'index'])->name('welcome');
 
 Route::get('/home', [PostsController::class, 'index'])->name('home');
+Route::get('/contact', [PostsController::class, 'contact'])->name('contact');
+Route::get('/about', [PostsController::class, 'about'])->name('about');
 
 
 Route::get('/posts/index', [PostsController::class, 'index'])->name('post.index');

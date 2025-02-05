@@ -11,7 +11,7 @@
             <div class="post-meta align-items-center text-center">
               <figure class="author-figure mb-0 me-3 d-inline-block"><img src="{{ asset('assets/user_images/'.$user->image.'') }}" alt="Image" class="img-fluid"></figure>
               <span class="d-inline-block mt-1">{{ $single->user_name }}</span>
-              <span>&nbsp;-&nbsp; {{ $single->created_at }}</span>
+              <span>&nbsp;-&nbsp; {{ \Carbon\Carbon::parse($single->created_at)->format('M d, Y') }}</span>
             </div>
           </div>
         </div>
@@ -64,7 +64,7 @@
                   </div> -->
                   <div class="comment-body">
                     <h3>{{$comment->user_name}}</h3>
-                    <div class="meta">{{ $comment->created_at }}</div>
+                    <div class="meta"> {{ \Carbon\Carbon::parse($scomment->created_at)->format('M d, Y') }}</div>
                     <p> {{ $comment->comment }}</p>
                     {{-- <p><a href="#" class="reply rounded">Reply</a></p> --}}
                   </div>
@@ -131,7 +131,7 @@
                     <div class="text">
                       <h4>{{ $Post->title }}</h4>
                       <div class="post-meta">
-                        <span class="mr-2">{{ $Post->created_at }}</span>
+                        <span class="mr-2"> {{ \Carbon\Carbon::parse($Post->created_at)->format('M d, Y') }}</span>
                       </div>
                     </div>
                   </a>
@@ -184,7 +184,7 @@
               <a href="single.html" class="img-link">
                 <img src="{{ asset('assets/images/'.$moreBlog->image.'') }}" alt="Image" class="img-fluid">
               </a>
-              <span class="date">{{$moreBlog->created_at}}</span>
+              <span class="date"> {{ \Carbon\Carbon::parse($moreBlog->created_at)->format('M d, Y') }}</span>
               <h2><a href="single.html">{{$moreBlog->title}}</a></h2>
               <p>{{$moreBlog->description}}</p>
               <p><a href="#" class="read-more">Continue Reading</a></p>
