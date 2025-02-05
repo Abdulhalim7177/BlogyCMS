@@ -17,7 +17,6 @@ Route::get('/about', [PostsController::class, 'about'])->name('about');
 
 
 Route::prefix('posts')->group(function () {
-    
     Route::get('/index', [PostsController::class, 'index'])->name('post.index');
     Route::get('/single/{id}', [PostsController::class, 'single'])->name('posts.single');
     Route::post('/comment-store', [PostsController::class, 'storeComment'])->name('comment.store');
@@ -26,4 +25,10 @@ Route::prefix('posts')->group(function () {
     Route::get('/post-delete/{id}', [PostsController::class, 'deletePost'])->name('post.delete');
     Route::get('/post-edit/{id}', [PostsController::class, 'editPost'])->name('post.edit');
     Route::post('/post-update/{id}', [PostsController::class, 'updatePost'])->name('post.update');
+});
+
+
+
+Route::group(['prefix' => 'categories'], function() {
+   Route::get('/{categories}', [CategoriesController::class, 'category'])->name('category');
 });
