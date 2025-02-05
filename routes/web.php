@@ -30,5 +30,5 @@ Route::prefix('posts')->group(function () {
 
 
 Route::group(['prefix' => 'categories'], function() {
-   Route::get('/{categories}', [CategoriesController::class, 'category'])->name('category');
+   Route::get('/category/{name}', [CategoriesController::class, 'category'])->name('category');
 });
