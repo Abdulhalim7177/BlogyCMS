@@ -16,11 +16,14 @@ Route::get('/contact', [PostsController::class, 'contact'])->name('contact');
 Route::get('/about', [PostsController::class, 'about'])->name('about');
 
 
-Route::get('/posts/index', [PostsController::class, 'index'])->name('post.index');
-Route::get('/posts/single/{id}', [PostsController::class, 'single'])->name('posts.single');
-Route::post('/posts/comment-store', [PostsController::class, 'storeComment'])->name('comment.store');
-Route::get('/posts/create-post', [PostsController::class, 'createPost'])->name('posts.create');
-Route::post('/posts/post-store', [PostsController::class, 'storePost'])->name('post.store');
-Route::get('/posts/post-delete/{id}', [PostsController::class, 'deletePost'])->name('post.delete');
-Route::get('/posts/post-edit/{id}', [PostsController::class, 'editPost'])->name('post.edit');
-Route::post('/posts/post-update/{id}', [PostsController::class, 'updatePost'])->name('post.update');
+Route::prefix('posts')->group(function () {
+    
+    Route::get('/index', [PostsController::class, 'index'])->name('post.index');
+    Route::get('/single/{id}', [PostsController::class, 'single'])->name('posts.single');
+    Route::post('/comment-store', [PostsController::class, 'storeComment'])->name('comment.store');
+    Route::get('/create-post', [PostsController::class, 'createPost'])->name('posts.create');
+    Route::post('/post-store', [PostsController::class, 'storePost'])->name('post.store');
+    Route::get('/post-delete/{id}', [PostsController::class, 'deletePost'])->name('post.delete');
+    Route::get('/post-edit/{id}', [PostsController::class, 'editPost'])->name('post.edit');
+    Route::post('/post-update/{id}', [PostsController::class, 'updatePost'])->name('post.update');
+});
