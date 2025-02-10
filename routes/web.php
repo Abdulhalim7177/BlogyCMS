@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\posts\PostsController;
+use App\Http\Controllers\Categories\CategoriesController;
 
 
 Auth::routes();
@@ -30,5 +31,5 @@ Route::prefix('posts')->group(function () {
 
 
 Route::group(['prefix' => 'categories'], function() {
-   Route::get('/category/{name}', [CategoriesController::class, 'category'])->name('category');
+   Route::get('/category/{name}', [CategoriesController::class, 'category'])->name('posts.single');
 });

@@ -11,8 +11,11 @@ class CategoriesController extends Controller
 {
     public function category($name)
     {
-       $Categories = Category::where('category', $name)->take(5)->orderBy('created_at','desc')->get();
+       $Categories = Category::where('category', $name)
+       ->take(5)
+       ->orderBy('created_at','desc')
+       ->get();
 
-       return view('categories.category', compact('Categories'));
+       return view('categories.category', compact('posts'));
     }
 }
