@@ -31,5 +31,5 @@ Route::prefix('posts')->group(function () {
 
 
 Route::group(['prefix' => 'categories'], function() {
-   Route::get('/category/{name}', [CategoriesController::class, 'category'])->name('posts.single');
+   Route::get('/category/{name}', [CategoriesController::class, 'category'])->name('category.single');
 });

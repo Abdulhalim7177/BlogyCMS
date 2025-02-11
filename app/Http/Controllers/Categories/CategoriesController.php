@@ -11,11 +11,11 @@ class CategoriesController extends Controller
 {
     public function category($name)
     {
-       $Categories = Category::where('category', $name)
+       $CatPosts = Category::where('category', $name)
        ->take(5)
        ->orderBy('created_at','desc')
        ->get();
 
-       return view('categories.category', compact('posts'));
+       return view('categories.category', compact('CatPosts'));
     }
 }

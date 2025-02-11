@@ -54,9 +54,9 @@
                                 <ul class="js-clone-nav d-none d-lg-inline-block text-start site-menu mx-auto">
                                     <li class="active"><a href="{{route('home')}}">Home</a></li>
 
-                                    <li><a href="{{route('category', 'Business')}}">Business</a></li>
-                                    <li><a href="{{route('category', 'Politics')}}">Politics</a></li>
-                                    <li><a href="{{route('category', 'Travel')}}">Travel</a></li>
+                                    <li><a href="{{route('category.single', 'Business')}}">Business</a></li>
+                                    <li><a href="{{route('category.single', 'Politics')}}">Politics</a></li>
+                                    <li><a href="{{route('category.single', 'Travel')}}">Travel</a></li>
                                     @auth
                                         <li><a href="{{route('posts.create')}}">Create Post</a></li>
                                     @endauth
