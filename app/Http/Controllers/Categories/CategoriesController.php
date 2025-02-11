@@ -15,7 +15,6 @@ class CategoriesController extends Controller
        ->take(5)
        ->orderBy('created_at','desc')
        ->get();
-
-       return view('categories.categories', compact('CatPosts'));
+       return view('categories.category', compact('CatPosts'));
     }
 }
