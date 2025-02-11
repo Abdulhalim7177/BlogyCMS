@@ -64,7 +64,7 @@
                   </div> -->
                   <div class="comment-body">
                     <h3>{{$comment->user_name}}</h3>
-                    <div class="meta"> {{ \Carbon\Carbon::parse($scomment->created_at)->format('M d, Y') }}</div>
+                    <div class="meta"> {{ \Carbon\Carbon::parse($comment->created_at)->format('M d, Y') }}</div>
                     <p> {{ $comment->comment }}</p>
                     {{-- <p><a href="#" class="reply rounded">Reply</a></p> --}}
                   </div>
