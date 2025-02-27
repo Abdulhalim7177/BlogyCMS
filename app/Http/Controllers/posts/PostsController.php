@@ -85,11 +85,6 @@ class PostsController extends Controller
 
         $comments = Comment::where('post_id', $id)->get();
         $commentNumber = $comments->count();
-        // $commentNumber = Comment::where('post_id', $id)->count(); do the same as the one above
-
-        // $comments = Comment::select('comment', 'post_id', 'user_id', 'user_name')->where('post_id', $id)->get();
-
-        // $moreBlogs = PostModel::where('category', $single->category)->where('id', '<>', $id)->take(4)->get();
 
         $moreBlogs = PostModel::where('category' , $single->category)->where('id','!=', $id)->take(4)->get();
     
@@ -108,12 +103,7 @@ class PostsController extends Controller
         echo "<script>alert('Comment added successfully!')</script>";
 
         return redirect('/posts/single/'.$request->post_id.'')->with('success', 'Comment added successfully!');
-        // $comment = new Comment();
-        // $comment->comment = $request->comment;
-        // $comment->post_id = $request->post_id;
-        // $comment->user_id = $request->user_id;
-        // $comment->user_name = $request->user_name;
-        // $comment->save();
+       
     
 
     }
