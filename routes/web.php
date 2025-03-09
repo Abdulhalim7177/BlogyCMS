@@ -1,14 +1,14 @@
 <?php
 
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\posts\PostsController;
+use App\Http\Controllers\Users\UsersController;
 use App\Http\Controllers\Categories\CategoriesController;
 
-
 Auth::routes();
-
 
 Route::get('/', [PostsController::class, 'index'])->name('welcome');
 
@@ -32,4 +32,9 @@ Route::prefix('posts')->group(function () {
 
 Route::group(['prefix' => 'categories'], function() {
    Route::get('/category/{name}', [CategoriesController::class, 'category'])->name('category.single');
+});
+
+Route::group(['prefix' => 'users'], function() {
+   Route::get('/edit/{id}', [UsersController::class, 'editProfile'])->name('users.edit');
+   Route::any('/update/{id}', [UsersController::class, 'updateProfile'])->name('users.update');
 });
