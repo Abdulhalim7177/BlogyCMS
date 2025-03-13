@@ -37,4 +37,6 @@ Route::group(['prefix' => 'categories'], function() {
 Route::group(['prefix' => 'users'], function() {
    Route::get('/edit/{id}', [UsersController::class, 'editProfile'])->name('users.edit');
    Route::any('/update/{id}', [UsersController::class, 'updateProfile'])->name('users.update');
+   Route::get('/profile/{id}', [UsersController::class, 'profile'])->name('users.profile');
+
 });

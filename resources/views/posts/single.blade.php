@@ -21,12 +21,12 @@
 
   <section class="section">
     <div class="container">
-
+{{-- 
       @if (\Session::has('update'))
       <div class="alert alert-success">   
         <p>{!! \Session::get('update') !!}</p>
       </div>
-    @endif
+    @endif --}}
       <div class="row blog-entries element-animate">
 
         <div class="col-md-12 col-lg-8 main-content">
@@ -108,7 +108,7 @@
               <div class="bio-body">
                 <h2>{{$user->name}}</h2>
                 <p class="mb-4">{{$user->description}}</p>
-                <p><a href="#" class="btn btn-primary btn-sm rounded px-2 py-2">Read my bio</a></p>
+                <p><a href="{{route('users.profile', $user->id)}}" class="btn btn-primary btn-sm rounded px-2 py-2">Read my bio</a></p>
                 <p class="social">
                   <a href="#" class="p-2"><span class="fa fa-facebook"></span></a>
                   <a href="#" class="p-2"><span class="fa fa-twitter"></span></a>

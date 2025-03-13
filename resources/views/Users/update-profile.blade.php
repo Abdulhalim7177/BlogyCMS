@@ -12,14 +12,29 @@
           <div class="form-group">
             <label for="message">Email </label>
             <input type="text" value="{{$user->email}}" class="form-control" name="email"  placeholder="email">
+            @error('email')
+            <span class="text-danger" role="alert">
+               <strong>{{ $message }}</strong>
+           </span>
+        @enderror
           </div>
           <div class="form-group">
             <label for="message">Name </label>
             <input type="text" value="{{$user->name}}" class="form-control" name="name"  placeholder="name">
+            @error('name')
+            <span class="text-danger" role="alert">
+               <strong>{{ $message }}</strong>
+           </span>
+        @enderror
           </div>
           <div class="form-group">
             <label for="message">Bio</label>
             <textarea name="bio" placeholder ="bio" cols="30" rows="10" class="form-control">{{$user->bio}}</textarea>
+            @error('bio')
+            <span class="text-danger" role="alert">
+               <strong>{{ $message }}</strong>
+           </span>
+        @enderror
           </div>
             <div class="form-group">
                 <label for="message">Image</label>
