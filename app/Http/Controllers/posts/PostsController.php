@@ -185,6 +185,13 @@ class PostsController extends Controller
     public function contact(){
         return view('pages.contact');
     }
+    public function search(Request $request){
+
+        $search = $request->get('search');
+        $result = PostModel::where('title', 'like', "%search%")->get();
+        print_r($result);
+        return view('posts.search', compact('result'));
+    }
     
 }
 

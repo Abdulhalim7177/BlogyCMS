@@ -105,8 +105,9 @@
                                 <a href="#" class="burger ms-auto float-end site-menu-toggle js-menu-toggle d-inline-block d-lg-none light">
                                     <span></span>
                                 </a>
-                                <form action="#" class="search-form d-none d-lg-inline-block">
-                                    <input type="text" class="form-control" placeholder="Search...">
+                                <form action="{{ route('posts.search')}}" method="POST" class="search-form d-none d-lg-inline-block">
+                                    @csrf
+                                    <input name="search" type="text" class="form-control" placeholder="Search...">
                                     <span class="bi-search"></span>
                                 </form>
                             </div>

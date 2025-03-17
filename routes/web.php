@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\posts\PostsController;
 use App\Http\Controllers\Users\UsersController;
+use App\Http\Controllers\Admins\AdminsController;
 use App\Http\Controllers\Categories\CategoriesController;
 
 Auth::routes();
@@ -24,6 +25,10 @@ Route::prefix('posts')->group(function () {
     Route::get('/create-post', [PostsController::class, 'createPost'])->name('posts.create');
     Route::post('/post-store', [PostsController::class, 'storePost'])->name('post.store');
     Route::get('/post-delete/{id}', [PostsController::class, 'deletePost'])->name('post.delete');
+
+//update post 
+
+Route::any('/search', [PostsController::class, 'search'])->name('posts.search');
     Route::get('/post-edit/{id}', [PostsController::class, 'editPost'])->name('post.edit');
     Route::post('/post-update/{id}', [PostsController::class, 'updatePost'])->name('post.update');
 });
@@ -37,6 +42,11 @@ Route::group(['prefix' => 'categories'], function() {
 Route::group(['prefix' => 'users'], function() {
    Route::get('/edit/{id}', [UsersController::class, 'editProfile'])->name('users.edit');
    Route::any('/update/{id}', [UsersController::class, 'updateProfile'])->name('users.update');
+   Route::get('/edit/{id}', [UsersController::class, 'editProfile'])->name('users.edit');
    Route::get('/profile/{id}', [UsersController::class, 'profile'])->name('users.profile');
 
 });
+
+Route::get('admin/login', [AdminsController::class, 'viewLogin'])->name('admins.login');
+Route::post('admin/login', [AdminsController::class, 'checkLogin'])->name('admins.check.login');
+Route::get('admin', [AdminsController::class, 'index'])->name('admins.dashboard');
